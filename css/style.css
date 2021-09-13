@@ -1,0 +1,15 @@
+/* Universal selector applies on all selectors */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Everything related to font must be specified in the body selector instead of universal selector. It can be trated as parent class, which will be inherited by child class*/
+body{
+    font-family: 'Lato',sans-serif;  /* if lato is not available then use sans-serif */
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+}
