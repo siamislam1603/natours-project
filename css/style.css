@@ -12,4 +12,144 @@ body{
     font-size: 16px;
     line-height: 1.7;
     color: #777;
+    padding: 30px;/* padding won't be inherited by any child element*/
+}
+.header{
+    height: 95vh;
+    /*linear-gradient will change background color from light green to dark green from top left to bottom right*/
+    background-image: linear-gradient(to right bottom,
+    rgba(126, 213, 111, 0.8),
+    rgba(40, 180, 133, 0.8)),
+    url(../img/hero.jpg);
+    background-size: cover;
+    /* squeezed from bottom on window minimization, for center both top & bottom will be squeezed*/
+    background-position: top; 
+    /* polygon co-ords(top left, top right, bottom right, bottom left)*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+}
+/* As we have made position absolute,it's parent (header) position must be relative*/ 
+.logo-box{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.logo{
+    height: 35px;
+}
+/* top & left attributes applied on the basis of its parent container, but translate applied on its own element*/
+.text-box-header {
+    position:absolute;
+    top: 40%;
+    left:50%;
+    /* it will shift half of the width & height to the left & top side*/
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* will stop the shaking of animation*/
+    margin-bottom: 60px;
+}
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;  /*speed become slower by time*/
+    
+    /*animation-delay: 3s; */ /* will start animation after 3s */
+   /* animation-iteration-count: 3;*/ /* animation will show 3 times */
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+@keyframes moveInLeft {
+    0%{
+        opacity: 0; /* Hide the text */
+        transform: translateX(-100px);  /* move the text to left by 100px */
+    }
+    80%{
+        transform: translateX(10px); /* move the text to the right by 10px*/
+    }
+    100%{
+        transform: translate(0);  /* get to the correct position */
+    }
+}
+@keyframes moveInRight {
+    0%{
+        opacity: 0; /* Hide the text */
+        transform: translateX(100px);  /* move the text to right by 100px */
+    }
+    80%{
+        transform: translateX(-10px); /* move the text to the left by 10px*/
+    }
+    100%{
+        transform: translate(0);  /* get to the correct position */
+    }
+}
+@keyframes moveInTop {
+    0%{
+        opacity: 0; /* Hide the text */
+        transform: translateY(30px);  
+    }
+    100%{
+        transform: translate(0);  /* get to the correct position */
+    }
+}
+/* psuedo class */
+.btn:link,
+.btn:visited{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    /* all properties will be animated */
+    transition: all 0.2s;
+    position: relative;
+}
+.btn:hover{
+    transform:translateY(-3px);
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.btn-white{
+    color: #777;
+    background-color: #fff;
+}
+/* psuedo element */
+.btn::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute; /* make button's its parent element by specifying btn's position relative */
+    z-index: -1; /* behind the original button */
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+    display: inline-block;
+    transition: all 0.4s;
+}
+.btn-white::after{
+    background-color: #fff;
+}
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+.btn-animated{
+    animation: moveInTop 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
 }
