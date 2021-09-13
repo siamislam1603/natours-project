@@ -48,16 +48,48 @@ body{
 .heading-primary{
     color: #fff;
     text-transform: uppercase;
+    backface-visibility: hidden; /* will stop the shaking of animation*/
 }
 .heading-primary-main{
     display: block;
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;  /*speed become slower by time*/
+    
+    /*animation-delay: 3s; */ /* will start animation after 3s */
+   /* animation-iteration-count: 3;*/ /* animation will show 3 times */
 }
 .heading-primary-sub{
     display: block;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+@keyframes moveInLeft {
+    0%{
+        opacity: 0; /* Hide the text */
+        transform: translateX(-100px);  /* move the text to left by 100px */
+    }
+    80%{
+        transform: translateX(10px); /* move the text to the right by 10px*/
+    }
+    100%{
+        transform: translate(0);  /* get to the correct position */
+    }
+}
+@keyframes moveInRight {
+    0%{
+        opacity: 0; /* Hide the text */
+        transform: translateX(100px);  /* move the text to right by 100px */
+    }
+    80%{
+        transform: translateX(-10px); /* move the text to the left by 10px*/
+    }
+    100%{
+        transform: translate(0);  /* get to the correct position */
+    }
 }
