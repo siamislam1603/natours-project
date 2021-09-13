@@ -44,11 +44,13 @@ body{
     left:50%;
     /* it will shift half of the width & height to the left & top side*/
     transform: translate(-50%,-50%);
+    text-align: center;
 }
 .heading-primary{
     color: #fff;
     text-transform: uppercase;
     backface-visibility: hidden; /* will stop the shaking of animation*/
+    margin-bottom: 60px;
 }
 .heading-primary-main{
     display: block;
@@ -92,4 +94,28 @@ body{
     100%{
         transform: translate(0);  /* get to the correct position */
     }
+}
+/* psuedo class */
+.btn:link,
+.btn:visited{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    /* all properties will be animated */
+    transition: all 0.2s;
+}
+.btn:hover{
+    transform:translateY(-3px);
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.btn-white{
+    color: #777;
+    background-color: #fff;
 }
